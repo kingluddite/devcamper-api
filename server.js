@@ -1,8 +1,8 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
-const colors = require('colors');
-
+const colors = require('colors'); // eslint-disable-line no-unused-vars
+const error = require('./middleware/error');
 const connectDB = require('./config/db');
 
 // Load env vars
@@ -16,12 +16,18 @@ const bootcamps = require('./routes/routes-bootcamps');
 
 const app = express();
 
+// Body parser
+app.use(express.json());
+
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
 // Mount routers
 app.use('/api/v1/bootcamps', bootcamps);
+
+// Custom Error handler
+app.use(error);
 
 const PORT = process.env.PORT || 5000;
 

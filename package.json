@@ -12,7 +12,6 @@
   "license": "ISC",
   "devDependencies": {
     "babel-eslint": "^9.0.0",
-    "colors": "^1.4.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-config-prettier": "^4.3.0",
@@ -30,9 +29,11 @@
     "stylelint-order": "^4.0.0"
   },
   "dependencies": {
-    "morgan": "^1.10.0",
+    "colors": "^1.4.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.9.14"
+    "mongoose": "^5.9.14",
+    "morgan": "^1.10.0",
+    "slugify": "^1.4.0"
   }
 }
