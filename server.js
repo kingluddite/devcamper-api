@@ -1,12 +1,9 @@
 const express = require('express');
-const dotenv = require('dotenv');
+const dotenv = require('dotenv').config({ path: './config/config.env' });
 const morgan = require('morgan');
 const colors = require('colors'); // eslint-disable-line no-unused-vars
 const error = require('./middleware/error');
 const connectDB = require('./config/db');
-
-// Load env vars
-dotenv.config({ path: './config/config.env' });
 
 // Connect to Database
 connectDB();
