@@ -1,5 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv').config({ path: './config/config.env' });
+const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const colors = require('colors'); // eslint-disable-line no-unused-vars
 const error = require('./middleware/error');
@@ -9,12 +10,16 @@ const connectDB = require('./config/db');
 connectDB();
 
 // Route files
-const bootcamps = require('./routes/routes-bootcamps');
+const bootcamps = require('./routes/route-bootcamps');
+const auth = require('./routes/route-auth');
 
 const app = express();
 
 // Body parser
 app.use(express.json());
+
+// Cookie parser
+app.use(cookieParser());
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
@@ -22,6 +27,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // Mount routers
 app.use('/api/v1/bootcamps', bootcamps);
+app.use('/api/v1/auth', auth);
 
 // Custom Error handler
 app.use(error);

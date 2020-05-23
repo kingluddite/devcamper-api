@@ -9,17 +9,19 @@ const {
 
 const router = express.Router();
 
+const { protect, authorize } = require('../middleware/auth');
+
 // /api/v1/bootcamps
 router
   .route('/')
   .get(getBootcamps)
-  .post(createBootcamp);
+  .post(protect, authorize('publisher', 'admin'), createBootcamp);
 
 // /api/v1/bootcamps/123
 router
   .route('/:id')
   .get(getBootcamp)
-  .put(updateBootcamp)
-  .delete(deleteBootcamp);
+  .put(protect, authorize('publisher', 'admin'), updateBootcamp)
+  .delete(protect, authorize('publisher', 'admin'), deleteBootcamp);
 
 module.exports = router;

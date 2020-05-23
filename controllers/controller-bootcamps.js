@@ -1,7 +1,6 @@
-const colors = require('colors'); // eslint-disable-line no-unused-vars
-const Bootcamp = require('../models/Bootcamp');
 const ErrorResponse = require('../utils/error-response');
 const asyncHandler = require('../middleware/async');
+const Bootcamp = require('../models/Bootcamp');
 
 // @desc     Get bootcamp
 // @route    GET /api/v1/bootcamps

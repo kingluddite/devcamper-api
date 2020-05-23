@@ -57,7 +57,7 @@ module.exports = {
     import: 0,
     'func-names': 0,
     'space-before-function-paren': 0,
-    'comma-dangle': 1,
+    'comma-dangle': 0,
     'max-len': 0,
     'import/extensions': 0,
     'no-underscore-dangle': 0,
